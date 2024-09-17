@@ -1,0 +1,38 @@
+<div class="row mt-5">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header">Afegir Producte</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addProduct()">
+                    <input formControlName="name" type="text" class="form-control" placeholder="Afegeix nom">
+                    @if(form.get('name')?.touched && form.get('name')?.hasError('required')){
+                    <span>Name is required</span>}
+
+                    <input formControlName="description" type="text" class="form-control mt-2"
+                        placeholder="Afegeix Despcripció">
+                    @if(form.get('description')?.touched && form.get('description')?.hasError('required')){
+                    <span>description is required</span>}
+
+                    <input formControlName="price" type="number" class="form-control mt-2" placeholder="Afegeix preu">
+                    @if(form.get('price')?.touched && form.get('price')?.hasError('required')){
+                    <span>Price is required</span>}
+
+                    <input formControlName="stock" type="number" class="form-control mt-2" placeholder="Afegeix stock">
+                    @if(form.get('stock')?.touched && form.get('stock')?.hasError('required')){
+                    <span>Stock is required</span>}
+
+                    <div class="row mt-3 text-center">
+                        <div class="col-lg-6">
+                            <button routerLink="/" type="button" class="btn btn-primary">Tornar</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Acceptar</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
