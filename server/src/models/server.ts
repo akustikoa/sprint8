@@ -1,4 +1,6 @@
-import express, { Application, Request, Response } from 'express'
+import express, { Application, Request, Response } from 'express';
+import routesProducto from '../routes/producto';
+import db from '../db/connection'
 
 class Server {
     private app: Application;
@@ -9,7 +11,9 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '3001';
         this.listen();
+        this.midlewares(); //sempre abans dels routes
         this.routes();
+        this.dbConnect();
     }
 
     listen() {
@@ -18,6 +22,8 @@ class Server {
         })
     }
 
+
+    //ruta raiz
     routes() {
         this.app.get('/', (req: Request, res: Response) => {
             res.json({
@@ -25,8 +31,30 @@ class Server {
             })
 
         })
+
+        this.app.use('/api/productos', routesProducto);
+    }
+
+    midlewares() {
+        //parseamos el body
+        this.app.use(express.json())
+
+    }
+
+    async dbConnect() {
+        try {
+            await db.authenticate();
+            console.log('bd connectada')
+        } catch (error) {
+            console.log(error);
+            console.log('error en la conexió de la bd')
+
+        }
+
     }
 
 }
+
+
 
 export default Server;
