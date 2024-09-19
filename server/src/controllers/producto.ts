@@ -8,41 +8,70 @@ export const getProducts = async (req: Request, res: Response) => {
     res.json(listProducts);
 }
 
-export const getProduct = (req: Request, res: Response) => {
+export const getProduct = async (req: Request, res: Response) => {
 
     const { id } = req.params;
+    const product = await Producto.findByPk(id);
 
-    res.json({
-        msg: 'get Product',
-        id
-    })
+    if (product) {
+        res.json(product);
+    } else {
+        res.status(404).json({
+            msg: `No existe un producto con el id ${id}`
+        });
+    }
 }
-export const deleteProduct = (req: Request, res: Response) => {
+export const deleteProduct = async (req: Request, res: Response) => {
 
     const { id } = req.params;
+    const product = await Producto.findByPk(id);
 
-    res.json({
-        msg: 'delete Product',
-        id
-    })
+    if (!product) {
+        res.json({
+            msg: `El producto con el id ${id} no existe`
+        })
+    } else {
+        await product.destroy();
+        res.json({
+            msg: `El producto fue eliminado con éxito`
+        })
+    }
 }
-export const postProduct = (req: Request, res: Response) => {
+export const postProduct = async (req: Request, res: Response) => {
 
     const { body } = req;
 
-    res.json({
-        msg: 'post Product',
-        body
-    })
+    try {
+        await Producto.create(body);
+        res.json({
+            msg: `El producto fue agregado con éxito!`
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            msg: `Lo sentimos ocurrió un error, contacta con soporte`
+        });
+    }
+
+
 }
-export const updateProduct = (req: Request, res: Response) => {
+export const updateProduct = async (req: Request, res: Response) => {
 
     const { body } = req;
     const { id } = req.params;
 
-    res.json({
-        msg: 'update Product',
-        id,
-        body
-    })
+    const product = await Producto.findByPk(id);
+    if (product) {
+        product.update(body);
+        res.json({
+            msg: `el producto ha sido actualizado con éxito`
+        })
+    } else {
+        res.status(404).json({
+            mag: `no existe un producto con el id ${id}`;
+        })
+    }
+
+
 }
