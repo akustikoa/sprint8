@@ -61,17 +61,24 @@ export const updateProduct = async (req: Request, res: Response) => {
     const { body } = req;
     const { id } = req.params;
 
-    const product = await Producto.findByPk(id);
-    if (product) {
-        product.update(body);
+    try {
+        const product = await Producto.findByPk(id);
+
+        if (product) {
+            await product.update(body);
+            res.json({
+                msg: `El producto ha sido actualizado con éxito`
+            })
+        } else {
+            res.status(404).json({
+                mag: `No existe un producto con el id ${id}`
+            })
+        }
+    } catch (error) {
+        console.log(error);
         res.json({
-            msg: `el producto ha sido actualizado con éxito`
-        })
-    } else {
-        res.status(404).json({
-            mag: `no existe un producto con el id ${id}`;
-        })
+            msg: `Lo sentimos ocurrió un error, contacta con soporte`
+        });
+
     }
-
-
 }
