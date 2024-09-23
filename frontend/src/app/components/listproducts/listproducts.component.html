@@ -7,7 +7,7 @@
         <h4>Listado de Productos</h4>
         <button type="button" class="btn btn-primary" routerLink="/add">Agregar Producto</button>
     </div>
-
+    @if (listProducts.length > 0) {
     <table class="table table-hover">
         <thead>
             <tr>
@@ -35,6 +35,10 @@
             }
         </tbody>
     </table>
+    }
+    @if (listProducts.length == 0) {
+    <h5>No hay productos para mostrar</h5>
+    }
 
 </div>
 }

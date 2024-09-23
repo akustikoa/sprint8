@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Product } from '../../interfaces/product';
+import { ProductService } from '../../services/product.service';
+import { ProgressBarComponent } from "../../shared/progress-bar/progress-bar.component";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-edit-product',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, ProgressBarComponent],
   templateUrl: './add-edit-product.component.html',
   styleUrl: './add-edit-product.component.css'
 })
 export class AddEditProductComponent {
   form: FormGroup
+  loading: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private _productService: ProductService,
+    private router: Router,
+    private toastr: ToastrService) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -35,7 +42,13 @@ export class AddEditProductComponent {
       price: this.form.value.price,
       stock: this.form.value.stock
     }
-    console.log(product);
+
+    this.loading = true;
+    this._productService.saveProduct(product).subscribe(() => {
+      this.loading = false;
+      this.toastr.success(`El producto ${product.name} fue registrado con éxito`, 'Producto registrado'); // toast per cartell
+      this.router.navigate(['/']); // routa un cop afegit el producte
+    })
   }
 
 

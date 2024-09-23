@@ -24,4 +24,8 @@ export class ProductService {
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>(`${this.myAappUrl}${this.myApiUrl}${id}`);
   }
+
+  saveProduct(product: Product): Observable<void> {
+    return this.http.post<void>(`${this.myAappUrl}${this.myApiUrl}`, product)
+  }
 }
