@@ -1,3 +1,7 @@
+@if (loading) {
+<app-progress-bar></app-progress-bar>
+}
+@if (!loading) {
 <div class="container">
     <div class="title">
         <h4>Listado de Productos</h4>
@@ -20,11 +24,12 @@
             <tr class="table-active">
                 <td>{{item.name}}</td>
                 <td>{{item.description}}</td>
-                <td>{{item.price}}</td>
+                <td>{{item.price | currency}}</td>
                 <td>{{item.stock}}</td>
-                <td><button routerLink="/edit/{{item.id}}" type="button"
-                        class="btn btn-info btn-sm">Edit</button><button type="button"
-                        class="btn btn-secondary btn-sm ms-2">Delete</button></td>
+                <td><button routerLink="/edit/{{item.id}}" type="button" class="btn btn-info btn-sm">Edit</button>
+                    <button (click)="deleteProduct(item.id!)" type="button"
+                        class="btn btn-secondary btn-sm ms-2">Delete</button>
+                </td>
 
             </tr>
             }
@@ -32,3 +37,4 @@
     </table>
 
 </div>
+}
