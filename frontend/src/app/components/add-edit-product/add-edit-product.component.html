@@ -5,7 +5,7 @@
 <div class="row mt-5">
     <div class="col-lg-4 offset-lg-4">
         <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
-            <div class="card-header">Afegir Producte</div>
+            <div class="card-header">{{ operacion }} Producte</div>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="addProduct()">
                     <input formControlName="name" type="text" class="form-control" placeholder="Afegeix nom">
