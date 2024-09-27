@@ -10,7 +10,7 @@ const Location = db.define('Location', {
     description: {
         type: DataTypes.TEXT,
     },
-    latitud: {
+    latitude: {
         type: DataTypes.DECIMAL(9, 6),
         allowNull: false,
     },
