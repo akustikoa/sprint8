@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { LocationResponse } from '../interfaces/location-response.interface'; // Importa la interfície
 
 export interface Location {
     id?: number;
@@ -19,11 +20,12 @@ export class LocationService {
 
     constructor(private http: HttpClient) { }
 
-    getLocations(): Observable<Location[]> {
-        return this.http.get<Location[]>(this.apiUrl);
+    // Modifica el tipus de retorn de Location a LocationResponse
+    createLocation(location: Location): Observable<LocationResponse> {
+        return this.http.post<LocationResponse>(this.apiUrl, location);
     }
 
-    createLocation(location: Location): Observable<Location> {
-        return this.http.post<Location>(this.apiUrl, location);
+    getLocations(): Observable<Location[]> {
+        return this.http.get<Location[]>(this.apiUrl);
     }
 }
