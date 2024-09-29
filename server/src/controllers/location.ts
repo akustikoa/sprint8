@@ -79,3 +79,17 @@ export const deleteLocation = async (req: Request, res: Response) => {
         msg: 'ubicaió eliminada correctament!',
     });
 };
+
+// Eliminar totes les ubicacions
+export const deleteAllLocations = async (req: Request, res: Response) => {
+    try {
+        await Location.destroy({ where: {}, truncate: true });
+        res.json({
+            msg: 'Totes les ubicacions han estat eliminades correctament!',
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Error eliminant totes les ubicacions',
+        });
+    }
+};

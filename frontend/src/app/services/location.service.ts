@@ -28,4 +28,8 @@ export class LocationService {
     getLocations(): Observable<Location[]> {
         return this.http.get<Location[]>(this.apiUrl);
     }
+
+    deleteAllLocations(): Observable<void> {
+        return this.http.delete<void>(this.apiUrl); // Fa la crida DELETE per esborrar totes les ubicacions
+    }
 }
