@@ -3,12 +3,12 @@
 }
 @if (!loading) {
 <div class="container">
-    <div class="title">
-        <h4>Listado de Productos</h4>
+    <div class="title mt-5">
+        <h2>Listado de Productos</h2>
         <button type="button" class="btn btn-primary" routerLink="/add">Agregar Producto</button>
     </div>
     @if (listProducts.length > 0) {
-    <table class="table table-hover">
+    <table class="table table-hover mt-5">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>

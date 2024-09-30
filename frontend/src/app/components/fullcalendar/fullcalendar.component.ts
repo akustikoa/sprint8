@@ -29,6 +29,7 @@ export class FullcalendarComponent {
     selectable: true, // Permet seleccionar un interval de temps per afegir esdeveniments
     events: this.calendarEvents,
     height: 'auto', // Ajusta automàticament l'alçada del calendari
+    allDaySlot: false,
     select: this.handleDateSelect.bind(this), // Funció per afegir esdeveniments
     eventClick: this.handleEventClick.bind(this) // Funció per eliminar esdeveniments
   };
