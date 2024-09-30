@@ -12,10 +12,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
   styleUrls: ['./fullcalendar.component.css']
 })
 export class FullcalendarComponent {
-  calendarEvents: any[] = [
-    { id: '1', title: 'Event 1', start: '2024-09-29T09:00:00', end: '2024-09-29T10:00:00' },
-    { id: '2', title: 'Event 2', start: '2024-09-30T12:00:00', end: '2024-09-30T13:00:00' }
-  ];
+  calendarEvents: any[] = [];
 
   calendarOptions: CalendarOptions = {
     plugins: [timeGridPlugin, interactionPlugin],
