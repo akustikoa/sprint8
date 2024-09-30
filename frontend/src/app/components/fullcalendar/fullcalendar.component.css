@@ -1,0 +1,13 @@
+/* fullcalendar.component.css */
+:host {
+  display: block;
+  width: 100%;
+}
+
+#calendar-container {
+  height: 80vh; /* Ajusta l'alçada segons necessitis, aquí es fa el 80% de la pantalla visible */
+}
+
+.fc {
+  height: 100%; /* Ocupa el 100% de l'alçada del contenidor */
+}
