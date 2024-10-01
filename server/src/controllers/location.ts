@@ -1,13 +1,13 @@
 import Location from "../models/location";
 import { Request, Response } from "express";
 
-//llistar ubicacions
+
 export const getLocations = async (req: Request, res: Response) => {
     const locations = await Location.findAll();
     res.json(locations);
 };
 
-// Obtenir una ubicació específica
+
 export const getLocation = async (req: Request, res: Response) => {
     const { id } = req.params;
     const location = await Location.findByPk(id);
@@ -21,7 +21,7 @@ export const getLocation = async (req: Request, res: Response) => {
     }
 }
 
-//afegir una nova ubicació 
+
 export const postLocation = async (req: Request, res: Response) => {
     const { body } = req;
     try {
@@ -37,7 +37,7 @@ export const postLocation = async (req: Request, res: Response) => {
     }
 };
 
-// Actualitzar una ubicació 
+
 export const updateLocation = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { body } = req;
@@ -63,7 +63,7 @@ export const updateLocation = async (req: Request, res: Response) => {
     }
 };
 
-// Eliminar una ubicació 
+
 export const deleteLocation = async (req: Request, res: Response) => {
     const { id } = req.params;
     const location = await Location.findByPk(id);
@@ -80,7 +80,7 @@ export const deleteLocation = async (req: Request, res: Response) => {
     });
 };
 
-// Eliminar totes les ubicacions
+
 export const deleteAllLocations = async (req: Request, res: Response) => {
     try {
         await Location.destroy({ where: {}, truncate: true });

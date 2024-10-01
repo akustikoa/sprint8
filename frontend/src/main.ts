@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http'; // Afegir importació de provideHttpClient
+import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { appConfig } from './app/app.config';
@@ -10,10 +10,10 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
-    provideRouter(routes), // Afegeix el proveïdor de rutes
-    provideHttpClient(),   // Per al client HTTP
-    provideAnimations(),   // Per a les animacions
-    provideToastr({        // Configuració de Toastr
+    provideRouter(routes),
+    provideHttpClient(),
+    provideAnimations(),
+    provideToastr({
       timeOut: 2000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
@@ -28,10 +28,4 @@ bootstrapApplication(AppComponent, {
 
 
 
-// ORIGINAL
-//   import { bootstrapApplication } from '@angular/platform-browser';
-// import { appConfig } from './app/app.config';
-// import { AppComponent } from './app/app.component';
 
-// bootstrapApplication(AppComponent, appConfig)
-//   .catch((err) => console.error(err));

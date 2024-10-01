@@ -4,7 +4,6 @@ import Producto from '../models/producto';
 export const getProducts = async (req: Request, res: Response) => {
 
     const listProducts = await Producto.findAll()
-
     res.json(listProducts);
 }
 
@@ -21,6 +20,7 @@ export const getProduct = async (req: Request, res: Response) => {
         });
     }
 }
+
 export const deleteProduct = async (req: Request, res: Response) => {
 
     const { id } = req.params;
@@ -37,6 +37,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
         })
     }
 }
+
 export const postProduct = async (req: Request, res: Response) => {
 
     const { body } = req;
@@ -53,9 +54,8 @@ export const postProduct = async (req: Request, res: Response) => {
             msg: `Lo sentimos ocurrió un error, contacta con soporte`
         });
     }
-
-
 }
+
 export const updateProduct = async (req: Request, res: Response) => {
 
     const { body } = req;

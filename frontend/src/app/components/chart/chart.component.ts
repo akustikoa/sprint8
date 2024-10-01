@@ -15,12 +15,11 @@ export class ChartComponent implements OnInit {
   constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
-    this.registerChartElements(); // Registra els elements necessaris
+    this.registerChartElements();
     this.loadLocations();
   }
 
   registerChartElements(): void {
-    // Registre dels components de Chart.js que necessitem
     Chart.register(BarController, BarElement, CategoryScale, LinearScale, LineController, PointElement, LineElement, Title, Tooltip);
   }
 
@@ -36,7 +35,7 @@ export class ChartComponent implements OnInit {
     const latitudes = this.locations().map(location => location.latitude);
     const longitudes = this.locations().map(location => location.longitude);
 
-    // Creació del gràfic de barres
+
     const ctxBar = document.getElementById('barChart') as HTMLCanvasElement;
     this.chart = new Chart(ctxBar, {
       type: 'bar',
@@ -59,7 +58,7 @@ export class ChartComponent implements OnInit {
       }
     });
 
-    // Creació del gràfic lineal
+
     const ctxLine = document.getElementById('lineChart') as HTMLCanvasElement;
     new Chart(ctxLine, {
       type: 'line',

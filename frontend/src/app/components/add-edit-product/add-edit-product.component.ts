@@ -58,7 +58,6 @@ export class AddEditProductComponent {
   }
 
   addProduct() {
-    // console.log(this.form.value.name);
 
     const product: Product = {
       name: this.form.value.name,
@@ -80,8 +79,8 @@ export class AddEditProductComponent {
       this.loading = true;
       this._productService.saveProduct(product).subscribe(() => {
         this.loading = false;
-        this.toastr.success(`El producto ${product.name} fue registrado con éxito`, 'Producto registrado'); // toast per cartell
-        this.router.navigate(['/']); // routa un cop afegit el producte
+        this.toastr.success(`El producto ${product.name} fue registrado con éxito`, 'Producto registrado');
+        this.router.navigate(['/']);
       })
     }
 

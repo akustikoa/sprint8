@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { LocationResponse } from '../interfaces/location-response.interface'; // Importa la interfície
+import { LocationResponse } from '../interfaces/location-response.interface';
 
 export interface Location {
     id?: number;
@@ -20,7 +20,7 @@ export class LocationService {
 
     constructor(private http: HttpClient) { }
 
-    // Modifica el tipus de retorn de Location a LocationResponse
+
     createLocation(location: Location): Observable<LocationResponse> {
         return this.http.post<LocationResponse>(this.apiUrl, location);
     }
@@ -30,6 +30,6 @@ export class LocationService {
     }
 
     deleteAllLocations(): Observable<void> {
-        return this.http.delete<void>(this.apiUrl); // Fa la crida DELETE per esborrar totes les ubicacions
+        return this.http.delete<void>(this.apiUrl);
     }
 }

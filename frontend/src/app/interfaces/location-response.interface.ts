@@ -1,4 +1,4 @@
-import { Location } from '../services/location.service'; // Ajusta el path si cal
+import { Location } from '../services/location.service';
 
 export interface LocationResponse {
     msg: string;

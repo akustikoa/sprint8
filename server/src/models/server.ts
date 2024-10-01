@@ -5,7 +5,6 @@ import routesProducto from '../routes/producto';
 import routesLocation from '../routes/location';
 import db from '../db/connection';
 
-// Carrega les variables d'entorn des del fitxer .env
 dotenv.config();
 
 class Server {
@@ -15,9 +14,9 @@ class Server {
     constructor() {
         console.log();
         this.app = express();
-        this.port = process.env.PORT || '3001';  // Usa el port del fitxer .env o 3001 per defecte
+        this.port = process.env.PORT || '3001';
         this.listen();
-        this.midlewares(); //sempre abans dels routes
+        this.midlewares();
         this.routes();
         this.dbConnect();
     }
@@ -28,7 +27,6 @@ class Server {
         });
     }
 
-    //ruta raíz
     routes() {
         this.app.get('/', (req: Request, res: Response) => {
             res.json({
@@ -41,10 +39,7 @@ class Server {
     }
 
     midlewares() {
-        //parseamos el body
         this.app.use(express.json());
-
-        //cors 
         this.app.use(cors());
     }
 

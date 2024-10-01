@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction'; // Necessari per a l'interacció (clics i seleccions)
+import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
 @Component({
@@ -16,31 +16,30 @@ export class FullcalendarComponent {
 
   calendarOptions: CalendarOptions = {
     plugins: [timeGridPlugin, interactionPlugin],
-    initialView: 'timeGridWeek', // Només mostra la vista setmanal
+    initialView: 'timeGridWeek',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: '' // No inclou cap botó per canviar la vista
+      right: ''
     },
-    editable: false, // Desactiva l'opció d'editar esdeveniments (arrossegar, canviar mida)
-    selectable: true, // Permet seleccionar un interval de temps per afegir esdeveniments
+    editable: true, // edita events
+    selectable: true, // interval setmanes 
     events: this.calendarEvents,
-    height: 'auto', // Ajusta automàticament l'alçada del calendari
+    height: 'auto',
     allDaySlot: false,
-    select: this.handleDateSelect.bind(this), // Funció per afegir esdeveniments
-    eventClick: this.handleEventClick.bind(this) // Funció per eliminar esdeveniments
+    select: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this)
   };
 
-  // Afegir un nou esdeveniment després de seleccionar una data
   handleDateSelect(selectInfo: any) {
     const title = prompt('Introdueix el títol de l\'esdeveniment');
     const calendarApi = selectInfo.view.calendar;
 
-    calendarApi.unselect(); // Neteja la selecció actual
+    calendarApi.unselect();
 
     if (title) {
       calendarApi.addEvent({
-        id: String(this.calendarEvents.length + 1), // Assigna un id únic
+        id: String(this.calendarEvents.length + 1),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr
@@ -48,10 +47,9 @@ export class FullcalendarComponent {
     }
   }
 
-  // Eliminar un esdeveniment quan es fa clic
   handleEventClick(clickInfo: any) {
     if (confirm(`Segur que vols eliminar l'esdeveniment '${clickInfo.event.title}'?`)) {
-      clickInfo.event.remove(); // Elimina l'esdeveniment seleccionat
+      clickInfo.event.remove();
     }
   }
 }

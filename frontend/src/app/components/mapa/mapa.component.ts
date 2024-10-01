@@ -16,7 +16,7 @@ export class MapaComponent implements OnInit {
   map!: mapboxgl.Map;
   locations = signal<Location[]>([]);
   selectedLocation = signal<Location | null>(null);
-  markers: mapboxgl.Marker[] = [];  // Emmagatzema tots els marcadors del mapa
+  markers: mapboxgl.Marker[] = [];
 
   constructor(private locationService: LocationService) { }
 
@@ -29,8 +29,8 @@ export class MapaComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-3.7038, 40.4168],
-      zoom: 12,
+      center: [2.15899, 41.38879],
+      zoom: 8,
       accessToken: environment.mapboxToken,
     });
 
@@ -76,18 +76,13 @@ export class MapaComponent implements OnInit {
         .setPopup(new mapboxgl.Popup().setHTML(`<h6>${location.name}</h6><p>${location.description}</p>`))
         .addTo(this.map);
 
-      // Emmagatzema cada marcador afegit
       this.markers.push(marker);
     }
   }
 
-  // Nou mètode per esborrar totes les localitzacions
   deleteAllLocations(): void {
     this.locationService.deleteAllLocations().subscribe(() => {
-      // Neteja les localitzacions del signal
       this.locations.set([]);
-
-      // Esborra els marcadors del mapa
       this.markers.forEach(marker => marker.remove());
       this.markers = [];
     });
