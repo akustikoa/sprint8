@@ -48,7 +48,7 @@ Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet g
 
   ```
 
-- ** Instal.la les dependències del backend**
+- **Instal.la les dependències del backend**
 
   ```bash
   npm install
@@ -58,30 +58,32 @@ Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet g
 - **Compila i arrenca el servidor**
   **A la primera terminal**
 
-  ````bash
+  ```bash
   nodemon dist/index.js
+  ```
 
   **A la segona terminal**
 
   ```bash
   tsc --watch
-  ````
+  ```
 
 ## Frontend (aplicació Angular)
 
 - **Entra al directori del frontend**
 
-````bash
+```bash
  cd ../frontend
+```
 
 - **Instal.la les dependències del frontend**
 
- ```bash
- npm install
+```bash
+npm install
+```
 
 - **Arrenca el servidor**
 
- ```bash
- nodemon dist/index.js
-
-````
+```bash
+nodemon dist/index.js
+```
