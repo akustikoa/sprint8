@@ -82,8 +82,8 @@ Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet g
   npm install
   ```
 
-- **Arrenca el servidor**
+- **Arrenca l'aplicació Angular**
 
   ```bash
-  nodemon dist/index.js
+  ng serve -o
   ```
