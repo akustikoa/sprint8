@@ -1,27 +1,87 @@
-# Inprocode
+# Inprocode Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+## Descripció
 
-## Development server
+Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet gestionar productes, visualitzar ubicacions en un mapa, interactuar amb un calendari per afegir i eliminar esdeveniments i mostrar dades en gràfics.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Característiques
 
-## Code scaffolding
+- **Gestió de Productes**: Afegir, editar, i eliminar productes d'un llistat.
+- **Mapa Interactiu**: Mostra ubicacions en un mapa interactiu de Mapbox, permetent afegir noves ubicacions fent clic al mapa.
+- **Calendari**: Utilitza FullCalendar per afegir i eliminar esdeveniments dins d'un calendari interactiu.
+- **Gràfics**: Visualitza les dades de les ubicacions mitjançant gràfics de barres i línies generats amb Chart.js.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologies Utilitzades
 
-## Build
+- **TypeScript**
+- **HTML5**
+- **SCSS**
+- **[Angular](https://angular.dev/installation)** CLI version 18.1.2
+- **Mapbox** per a la visualització de mapes
+- **FullCalendar** per a la gestió de calendaris
+- **Chart.js** per a la creació de gràfics
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Requisits
 
-## Running unit tests
+- **Node.js** i **npm** instal·lats al teu sistema. Pots trobar-los a [nodejs.org](https://nodejs.org/en).
+- **Angular CLI** instal·lat globalment. Pots instal·lar-lo amb el següent codi:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  ```bash
+  npm install -g @angular/cli
+  ```
 
-## Running end-to-end tests
+## Instal.lació
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Backend (servidor Node.js)
 
-## Further help
+- **Clona el repositori**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  ```bash
+  git clone https://github.com/akustikoa/sprint8.git
+
+  ```
+
+- **Entra al directori del projecte**
+
+  ```bash
+  cd inprocode/backend
+
+  ```
+
+- ** Instal.la les dependències del backend**
+
+  ```bash
+  npm install
+
+  ```
+
+- **Compila i arrenca el servidor**
+  **A la primera terminal**
+
+  ````bash
+  nodemon dist/index.js
+
+  **A la segona terminal**
+
+  ```bash
+  tsc --watch
+  ````
+
+## Frontend (aplicació Angular)
+
+- **Entra al directori del frontend**
+
+````bash
+ cd ../frontend
+
+- **Instal.la les dependències del frontend**
+
+ ```bash
+ npm install
+
+- **Arrenca el servidor**
+
+ ```bash
+ nodemon dist/index.js
+
+````
