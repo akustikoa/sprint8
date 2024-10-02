@@ -72,18 +72,18 @@ Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet g
 
 - **Entra al directori del frontend**
 
-```bash
- cd ../frontend
-```
+  ```bash
+  cd ../frontend
+  ```
 
 - **Instal.la les dependències del frontend**
 
-```bash
-npm install
-```
+  ```bash
+  npm install
+  ```
 
 - **Arrenca el servidor**
 
-```bash
-nodemon dist/index.js
-```
+  ```bash
+  nodemon dist/index.js
+  ```
