@@ -55,6 +55,13 @@ Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet g
 
   ```
 
+- **En el teu mySQLadmin crea una base da dades "almacen"**
+
+  ```bash
+  importa l'arxiu almacen.sql
+
+  ```
+
 - **Compila i arrenca el servidor**
   **A la primera terminal**
 
