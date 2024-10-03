@@ -63,7 +63,7 @@ Aquest projecte és una aplicació web desenvolupada amb Angular 18 que permet g
   ```
 
 - **Compila i arrenca el servidor**
- 
+
   **A la primera terminal**
 
   ```bash
